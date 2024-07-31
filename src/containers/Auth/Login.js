@@ -18,6 +18,16 @@ class Login extends Component {
         }
     }
 
+    // Check if user is already logged in
+    // If user is already logged in, redirect to home page
+    componentDidMount() {
+        // Check if user is already logged in
+        const token = localStorage.getItem('userToken');
+        if (token) {
+            this.props.userLoginSuccess({ token });
+        }
+    }
+
     handleOnChangeUsername = (event) => {
         this.setState({
           username: event.target.value  
@@ -45,7 +55,10 @@ class Login extends Component {
                   }) 
             } else if (data && data.errCode === 0) {
                 //todo
-                console.log('login success', data);
+                // Save token to local storage
+                // Save user info to redux
+                // Redirect to home page
+                localStorage.setItem('userToken', data.token);
                 this.props.userLoginSuccess(data.user);
             }
         }catch(error) {
@@ -151,3 +164,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
