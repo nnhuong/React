@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { push } from "connected-react-router";
-
 import * as actions from "../store/actions";
 import { KeyCodeUtils, LanguageUtils } from "../utils";
 
@@ -31,7 +30,7 @@ class Login extends Component {
     refresh = () => {
         this.setState({
             ...this.initialState
-        })
+        });
     }
 
     onUsernameChange = (e) => {
@@ -48,25 +47,25 @@ class Login extends Component {
         navigate(`${redirectPath}`);
     }
 
-    processLogin = () => {
+    processLogin = async() => {
         const { username, password } = this.state;
-
         const { adminLoginSuccess, adminLoginFail } = this.props;
+
         let loginBody = {
             username: 'admin',
             password: '123456'
         }
-        //sucess
+    
         let adminInfo = {
             "tlid": "0",
             "tlfullname": "Administrator",
             "custype": "A",
-            "accessToken": "eyJhbGciOiJIU"
-        }
+            "accessToken": "abc"
+        };
 
-        adminLoginSuccess(adminInfo);
+
         this.refresh();
-        this.redirectToSystemPage();
+        this.directToSystemPage();
         try {
             adminService.login(loginBody)
         } catch (e) {

@@ -30,19 +30,19 @@ class Login extends Component {
 
     handleOnChangeUsername = (event) => {
         this.setState({
-          username: event.target.value  
+            username: event.target.value
         })
         console.log(event.target.value)
     }
 
     handleOnChangePassword = (event) => {
         this.setState({
-          password: event.target.value  
+            password: event.target.value
         })
         console.log(event.target.value)
     }
 
-    handleLogin = async() => {
+    handleLogin = async () => {
         this.setState({
             errMessage: ''
         })
@@ -51,8 +51,8 @@ class Login extends Component {
             let data = await handleLoginApi(this.state.username, this.state.password);
             if (data && data.errCode !== 0) {
                 this.setState({
-                    errMessage : data.message
-                  }) 
+                    errMessage: data.message
+                })
             } else if (data && data.errCode === 0) {
                 //todo
                 // Save token to local storage
@@ -61,17 +61,17 @@ class Login extends Component {
                 localStorage.setItem('userToken', data.token);
                 this.props.userLoginSuccess(data.user);
             }
-        }catch(error) {
-            if(error.response) {
-                if(error.response.data) {
+        } catch (error) {
+            if (error.response) {
+                if (error.response.data) {
                     this.setState({
-                        errMessage : error.response.data.message
-                      }) 
+                        errMessage: error.response.data.message
+                    })
                 }
             }
-        //   console.log(e);
-          console.log('hoidanit', error.response)
-         
+            //   console.log(e);
+            console.log('hoidanit', error.response)
+
         }
     }
 
@@ -95,54 +95,54 @@ class Login extends Component {
                         <div className='col-12 text-login'>Login</div>
                         <div className='col-12 form-group login-input'>
                             <label>Username:</label>
-                            <input type='text' 
-                            className='form-control' 
-                            placeholder='Enter your username'
-                            value={this.state.username}
-                            onChange={(event) => this.handleOnChangeUsername(event)}/> 
+                            <input type='text'
+                                className='form-control'
+                                placeholder='Enter your username'
+                                value={this.state.username}
+                                onChange={(event) => this.handleOnChangeUsername(event)} />
                         </div>
                         <div className='col-12 form-group login-input' >
                             <label>Password:</label>
                             <div className='custom-input-password'>
-                            <input 
-                                type={this.state.isShowPassword ? 'text' : 'password'}
-                                className='form-control'
-                                placeholder='Enter your password'
-                                onChange={(event) => this.handleOnChangePassword(event)}/> 
-                            <span onClick = {() => this.handleShowHidePassword()}>
-                                
-                                <i class= {this.state.isShowPassword ? 'far fa-eye' : 'far fa-eye-slash'}></i>
-                            </span>
+                                <input
+                                    type={this.state.isShowPassword ? 'text' : 'password'}
+                                    className='form-control'
+                                    placeholder='Enter your password'
+                                    onChange={(event) => this.handleOnChangePassword(event)} />
+                                <span onClick={() => this.handleShowHidePassword()}>
+
+                                    <i class={this.state.isShowPassword ? 'far fa-eye' : 'far fa-eye-slash'}></i>
+                                </span>
                             </div>
 
                         </div>
-                        <div className='col-12' style={{ color: 'red'}}>
+                        <div className='col-12' style={{ color: 'red' }}>
                             {this.state.errMessage}
 
                         </div>
                         <div className='col-12'>
-                        <button 
-                            className='btn-login' 
-                            onClick={() =>{this.handleLogin()} }
-                            onKeyPress={(event) => 
-                                this.handleKeyPress(event)
-                            }
+                            <button
+                                className='btn-login'
+                                onClick={() => { this.handleLogin() }}
+                                onKeyPress={(event) =>
+                                    this.handleKeyPress(event)
+                                }
                             >Login</button>
                         </div>
                         <div className='col-12'>
                             <span className='forgot-password'> Forgot your password?</span>
                         </div>
                         <div>
-                        <div className='col-12 text-center mt-3'>
-                            <span className='text-other-login'>Or Login with:</span>
-                        </div>   
-                        <div className='col-12 social-login'>
-                        <i className='fab fa-google-plus-g google'></i>  
-                        <i className='fab fa-facebook-f facebook'></i>  
+                            <div className='col-12 text-center mt-3'>
+                                <span className='text-other-login'>Or Login with:</span>
+                            </div>
+                            <div className='col-12 social-login'>
+                                <i className='fab fa-google-plus-g google'></i>
+                                <i className='fab fa-facebook-f facebook'></i>
 
-                        </div> 
+                            </div>
                         </div>
-                   </div>
+                    </div>
                 </div>
             </div>
         )
