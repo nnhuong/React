@@ -161,8 +161,8 @@ class UserManage extends Component {
                     <td>{item.lastName}</td>
                     <td>{item.address}</td>
                     <td>
-                      <button className="btn-edit" onClick={() => this.handleEditUser(item)}><i className="fas fa-pen-square"></i></button>
-                      <button className="btn-delete" onClick={() => this.handleDeleteUser(item)}><i className="fas fa-trash"></i></button>
+                      <button className="btn-edit" onClick={() => this.handleEditUser(item)}><i className="fas fa-pen-square"></i> <p className='edit'>Edit</p></button>
+                      <button className="btn-delete" onClick={() => this.handleDeleteUser(item)}><i className="fas fa-trash"></i> <p className='delete'>delete</p></button>
                     </td>
                   </tr>
                 )
