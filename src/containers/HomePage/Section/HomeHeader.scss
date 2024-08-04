@@ -30,6 +30,7 @@
         }
 
         .center-content {
+            cursor: pointer;
             width: 55%;
             display: flex;
             justify-content: space-between;
@@ -49,48 +50,71 @@
             align-items: center;
             gap: 5px;
 
-            .support{
-                padding-right: 50px;
-                display: flex;
-                align-items: center;
-                margin-left: 5px;
+                .support {
+                    cursor: pointer;
+                    padding-right: 50px;
+                    display: flex;
+                    align-items: center;
+                    margin-left: 5px;
+                    .i {
+                        margin-right: 5px;
+                    }
+                }
 
-                .i{
-                    margin-right: 5px;
-                }
-            .language-vi{
+                .language-vi {
                     cursor: pointer;
-                    &.active{
-                        color: orange;
-                    }
+                    opacity: 0.2;
+                    &.active {
+                        span{
+                            color: orange;
+                        }
+                            opacity: 1;
+                        }  
+                    &:hover{
+                        opacity: 0.8;
+                    }       
+
                 }
-            .language-en{
+
+                .language-en {
+                    cursor: pointer;
                     margin: 0 10px;
-                    cursor: pointer;
-                    &.active{
-                        color: blue;
+                    opacity: 0.2;
+
+                    &.active {
+                        span{
+                            color: blue; 
+                        }
+                        
+                        opacity: 1;
+                    &:hover{
+                        opacity: 0.8;
+                    }   
+
                     }
-                    
+
                 }
             }
         }
     }
-}
+
 
 .home-header-banner {
-    background-image: url('/assets/images/banner1.jpg'); 
+    background-image: url('/assets/images/banner1.jpg');
     height: 650px;
     background-size: cover;
     display: flex;
     flex-direction: column;
- 
 
-    .content-up{
-        background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(255, 255, 255 , 0.1));;
+
+    .content-up {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.1));
+        ;
         height: 65%;
         padding-top: 15px;
 
         .title1 {
+            cursor: default;
             text-align: center;
             font-size: 35px;
             text-shadow: 1px 1px 1px white;
@@ -101,6 +125,7 @@
         }
 
         .title2 {
+            cursor: default;
             text-align: center;
             font-size: 35px;
             text-shadow: 1px 1px 1px white;
@@ -117,9 +142,9 @@
             padding: 10px;
             border-radius: 25px;
             background: #f7d800;
-            
 
-            .text{
+
+            .text {
                 height: 30px;
                 width: 360px;
                 background: transparent;
@@ -128,66 +153,71 @@
                 margin-left: 80px;
 
 
-                i{
+                i {
                     margin: 0 5px;
-                
+
                 }
             }
         }
     }
 
-    
-    .content-down{
-       height: 35%;
-       display: flex;
-       align-items: flex-end;
-       justify-content: center;
-       background-image:  linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255 , 0.9),  rgba(255, 255, 255 , 1)); ;
-    
+
+    .content-down {
+        height: 35%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
+        ;
+
     }
 
 
-        .options {
-            display: flex;
-            text-align: center;
-            gap: 50px;
-            justify-content: center;
-            .option-child{
-                width: 125px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 10px; 
-                .icon-child{
-                    background: white;
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 50%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    margin: 0 auto;
-                    padding: 5px;
-            
+    .options {
+        display: flex;
+        text-align: center;
+        gap: 50px;
+        justify-content: center;
+        cursor: pointer;
 
-                   i{
+        .option-child {
+            width: 125px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+
+            .icon-child {
+                background: white;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto;
+                padding: 5px;
+
+
+                i {
                     color: #65c3c3e6;
                     font-size: 22px;
-                   }
                 }
+            }
 
-                .text-child{
-                    width: 100px;
-                    text-align: center;
-                    font-size: 16px;
-                    font-weight: 500;
-                    margin-top: 10px; 
-                    &:hover{
-                        color:#65c3c3e6;
-                        cursor: pointer;
+            .text-child {
+                width: 100px;
+                text-align: center;
+                font-size: 16px;
+                font-weight: 500;
+                margin-top: 10px;
 
-                }
+                &:hover {
+                    color: #65c3c3e6;
+                    cursor: pointer;
+
                 }
             }
         }
+    }
 }
