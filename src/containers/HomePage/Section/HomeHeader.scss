@@ -1,7 +1,7 @@
 .home-header-container {
     height: 60px;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 40px;
 
     .home-header-content {
         width: 100%;
@@ -9,8 +9,7 @@
         display: flex;
 
         .left-content {
-            width: 25%;
-            border: 1px solid green;
+            width: 20%;
             display: flex;
             align-items: center;
 
@@ -18,8 +17,9 @@
                 background: url('/assets/images/Logo.png') center center no-repeat;
                 background-size: contain;
                 height: 100%;
-                width: 100%;
+                width: 50%;
                 cursor: pointer;
+                margin-left: 12px;
             }
 
             i {
@@ -30,8 +30,7 @@
         }
 
         .center-content {
-            width: 50%;
-            border: 1px solid rgb(109, 128, 0);
+            width: 55%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,25 +44,50 @@
 
         .right-content {
             width: 25%;
-            border: 1px solid rgb(128, 36, 0);
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
             gap: 5px;
+
+            .support{
+                padding-right: 50px;
+                display: flex;
+                align-items: center;
+                margin-left: 5px;
+
+                .i{
+                    margin-right: 5px;
+                }
+            .language-vi{
+                    cursor: pointer;
+                    &.active{
+                        color: orange;
+                    }
+                }
+            .language-en{
+                    margin: 0 10px;
+                    cursor: pointer;
+                    &.active{
+                        color: blue;
+                    }
+                    
+                }
+            }
         }
     }
 }
 
 .home-header-banner {
-    background: url('/assets/images/banner1.jpg') center center no-repeat;
+    background-image: url('/assets/images/banner1.jpg'); 
     height: 650px;
     background-size: cover;
     display: flex;
     flex-direction: column;
+ 
 
     .content-up{
-        border: 1px solid red;
-        height: 50%;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(255, 255, 255 , 0.1));;
+        height: 65%;
         padding-top: 15px;
 
         .title1 {
@@ -114,8 +138,11 @@
 
     
     .content-down{
-       height: 50%;
-       border: 1px solid green;
+       height: 35%;
+       display: flex;
+       align-items: flex-end;
+       justify-content: center;
+       background-image:  linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255 , 0.9),  rgba(255, 255, 255 , 1)); ;
     
     }
 
@@ -127,7 +154,6 @@
             justify-content: center;
             .option-child{
                 width: 125px;
-                border: 1px solid red;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -153,7 +179,7 @@
                 .text-child{
                     width: 100px;
                     text-align: center;
-                    font-size: 15px;
+                    font-size: 16px;
                     font-weight: 500;
                     margin-top: 10px; 
                     &:hover{
