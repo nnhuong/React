@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import HomeHeader from './Section/HomeHeader';
 import Home from '../../routes/Home';
+import Specialty from './Section/Specialty';
 class HomePage extends Component {
 
     render() {
         return (
             <div>
                 <HomeHeader/>
+                <Specialty/>
             </div>
         );
     }
