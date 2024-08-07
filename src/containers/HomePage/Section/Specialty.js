@@ -5,30 +5,9 @@ import { FormattedMessage } from 'react-intl';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "red" }}
-        onClick={onClick}
-      />
-    );
-  }
-  
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "green" }}
-        onClick={onClick}
-      />
-    );
-  } 
+// import specialtyImg from "../../../assets/specialty/co-xuong-khop.png"
 class Specialty extends Component {
-    
+
 
 
 
@@ -37,35 +16,52 @@ class Specialty extends Component {
             dots: false,
             infinite: true,
             speed: 500,
-            slidesToShow: 4,
+            slidesToShow: 3,
             slidesToSroll: 1,
             // nextArrow: <SampleNextArrow/>,
             // prevArrow: <SamplePrevArrow/>
         }
         return (
             <div className="section-specialty">
-                <div className="specialty-content">
-                <Slider {...settings}>
-                    <div className="img-customize">
-                        <h3>1</h3>
+                <div className="specialty-container">
+                    <div className="specialty-header">
+                        <span className="title-section">Chuyên khoa phổ biến</span>
+                        <button className="btn-section">Xem thêm</button>
                     </div>
-                    <div className="img-customize">
-                        <h3>2</h3>
+
+                    <div className="specialty-body">
+
+                        <Slider {...settings}>
+                            <div className="specialty-customize">
+                                <div className="bg-image" />
+                                <div>Cơ xương khớp 1</div>
+                            </div>
+                            <div className="specialty-customize">
+                                <div className="bg-image" />
+                                <div>Cơ xương khớp 2</div>
+                            </div>
+                            <div className="specialty-customize">
+                                <div className="bg-image" />
+                                <div>Cơ xương khớp 3</div>
+                            </div>
+                            <div className="specialty-customize">
+                                <div className="bg-image" />
+                                <div>Cơ xương khớp 4</div>
+                            </div>
+                            <div className="specialty-customize">
+                                <div className="bg-image" />
+                                <div>Cơ xương khớp 5</div>
+                            </div>
+                            <div className="specialty-customize">
+                                <div className="bg-image" />
+                                <div>Cơ xương khớp 6</div>
+                            </div>
+                        </Slider>
+
+
                     </div>
-                    <div  className="img-customize">
-                        <h3>3</h3>
-                    </div>
-                    <div className="img-customize">
-                        <h3>4</h3>
-                    </div>
-                    <div  className="img-customize">
-                        <h3>5</h3>
-                    </div>
-                    <div  className="img-customize">
-                        <h3>6</h3>
-                    </div>
-                </Slider>
-                
+
+
                 </div>
             </div>
         );
