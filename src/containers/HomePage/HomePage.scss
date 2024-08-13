@@ -39,8 +39,7 @@
         background: #fdfcfc;
     }
     &.section-about{
-        background: #fdfcfc;
-        border: 1px solid red
+        height: 500px !important;
     }
 
     .section-body {
@@ -151,7 +150,6 @@
     .section-customize{
         padding: 5px;
         .customize-border{
-            border: 1px solid red;
             padding: 20px;
         }
     }
@@ -159,5 +157,36 @@
 
 .home-footer{
     margin-left: 20px;
-    padding-top: 5px
+    padding-top: 5px;
 }
+.section-about{
+    padding: 0 100px;
+    border-top: 1px solid #fcfcfc;
+    border-bottom: 1px solid #fcfcfc;
+    .section-about-header{
+        padding: 10px;
+        font-size: 22px;
+        font-weight: 700;
+    }
+    .section-about-content{
+        display: flex;
+        gap: 15px;
+        width: 100%;
+
+        .content-left{
+            width: 60%;
+        }
+        .content-right{
+            width: 40%;
+            margin-bottom: 5px;
+            margin-left: 5px;
+
+            p{
+                text-align: justify;
+                font-style: italic;
+                padding-top: 15px;
+            }
+        }
+    }
+}
+
