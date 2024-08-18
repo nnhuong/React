@@ -18,16 +18,6 @@ class Login extends Component {
         }
     }
 
-    // Check if user is already logged in
-    // If user is already logged in, redirect to home page
-    componentDidMount() {
-        // Check if user is already logged in
-        const token = localStorage.getItem('userToken');
-        if (token) {
-            this.props.userLoginSuccess({ token });
-        }
-    }
-
     handleOnChangeUsername = (event) => {
         this.setState({
             username: event.target.value
@@ -69,8 +59,7 @@ class Login extends Component {
                     })
                 }
             }
-            //   console.log(e);
-            console.log('hoidanit', error.response)
+            console.log('test', error.response)
 
         }
     }
@@ -114,7 +103,6 @@ class Login extends Component {
                                     <i class={this.state.isShowPassword ? 'far fa-eye' : 'far fa-eye-slash'}></i>
                                 </span>
                             </div>
-
                         </div>
                         <div className='col-12' style={{ color: 'red' }}>
                             {this.state.errMessage}
@@ -139,7 +127,6 @@ class Login extends Component {
                             <div className='col-12 social-login'>
                                 <i className='fab fa-google-plus-g google'></i>
                                 <i className='fab fa-facebook-f facebook'></i>
-
                             </div>
                         </div>
                     </div>

@@ -12,7 +12,6 @@ class HomeHeader extends Component {
 
     }
     render() {
-        console.log('check props: ', this.props)
         let language =  this.props.language;
         return (
             <React.Fragment>
@@ -41,7 +40,7 @@ class HomeHeader extends Component {
                             </div>
                         </div>
                         <div className='right-content'>
-                            <div className='support'> <i className="fas fa-question"></i> <FormattedMessage id="homeheader.support"/></div>
+                            <div className='support'><i className="far fa-question-circle"></i><FormattedMessage id="homeheader.support"/></div>
                             <div className={language === LANGUAGES.VI ? 'language-vi active' : 'language-vi'}><span onClick={() => this.changeLanguage(LANGUAGES.VI)}>VN</span></div>
                             <div className={language === LANGUAGES.EN ? 'language-en active' : 'language-en'}><span onClick={() => this.changeLanguage(LANGUAGES.EN)}>EN</span></div>
                         </div>
@@ -51,7 +50,9 @@ class HomeHeader extends Component {
                     <div className='content-up'>
                         <div className='title1'><FormattedMessage id="banner.title1"/></div>
                         <div className='title2'><FormattedMessage id="banner.title2"/></div>
-                        <div className='search'><i className="fas fa-search"></i><input className='text' type='text' placeholder='Tìm chuyên khoa khám bệnh' /> </div>
+                        <div>
+                        </div>
+                        <div className='search'><i className="fas fa-search"></i><input className='text' type='text' placeholder='Tìm chuyên khoa khám bệnh'/></div>
                     </div>
                     <div className='content-down'>
                         <div className='options'>

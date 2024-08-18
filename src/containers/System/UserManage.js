@@ -6,10 +6,8 @@ import { getAllUsers, createNewUserService, deleteUserService, editUserService }
 import ModalUser from './modalUser';
 import ModalEditUser from './modalEditUser'
 import { emitter } from "../../utils/emitter";
+
 class UserManage extends Component {
-
-
-
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +25,6 @@ class UserManage extends Component {
         arrUsers: response.users
       })
     }
-
   }
 
   getAllUsersFromReact = async () => {
@@ -75,7 +72,7 @@ class UserManage extends Component {
     }
   }
 
- 
+
   handleDeleteUser = async (user) => {
     console.log('Click delete', user)
     try {
@@ -102,19 +99,19 @@ class UserManage extends Component {
 
   doEditUser = async (user) => {
     let res = await editUserService(user);
-    try{       
-      if( res && res.errCode === 0){
+    try {
+      if (res && res.errCode === 0) {
         this.setState({
           isOpenModalEditUser: false
-        })  
+        })
         await this.getAllUsersFromReact();
-        console.log('User: ', this.state.users) 
-      }else{
+        console.log('User: ', this.state.users)
+      } else {
         alert(res.errCode)
       }
-    }catch(e){
+    } catch (e) {
       console.log(e)
-    }   
+    }
   }
 
 

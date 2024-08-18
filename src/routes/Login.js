@@ -1,14 +1,13 @@
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { push } from "connected-react-router";
 import * as actions from "../store/actions";
 import { KeyCodeUtils, LanguageUtils } from "../utils";
-
 import userIcon from '../../src/assets/images/user.svg';
 import passIcon from '../../src/assets/images/pass.svg';
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
-
 import adminService from '../services/adminService';
 
 class Login extends Component {
@@ -47,7 +46,7 @@ class Login extends Component {
         navigate(`${redirectPath}`);
     }
 
-    processLogin = async() => {
+    processLogin = async () => {
         const { username, password } = this.state;
         const { adminLoginSuccess, adminLoginFail } = this.props;
 
@@ -55,23 +54,22 @@ class Login extends Component {
             username: 'admin',
             password: '123456'
         }
-    
-        let adminInfo = {
-            "tlid": "0",
-            "tlfullname": "Administrator",
-            "custype": "A",
-            "accessToken": "abc"
-        };
 
-
-        this.refresh();
-        this.directToSystemPage();
         try {
-            adminService.login(loginBody)
+            const response = await adminService.login(loginBody);
+            if (response && response.accessToken) {
+                localStorage.setItem('accessToken', response.accessToken);
+                adminLoginSuccess(response);
+                this.redirectToSystemPage();
+            } else {
+                adminLoginFail();
+                this.setState({ loginError: 'Login failed' });
+            }
         } catch (e) {
-            console.log('error login : ', e)
+            console.log('error login : ', e);
+            adminLoginFail();
+            this.setState({ loginError: 'Login failed' });
         }
-
     }
 
     handlerKeyDown = (event) => {
@@ -85,6 +83,12 @@ class Login extends Component {
 
     componentDidMount() {
         document.addEventListener('keydown', this.handlerKeyDown);
+        const token = localStorage.getItem('accessToken');
+        if (token) {
+            // Automatically log in the user if token exists
+            this.props.adminLoginSuccess({ accessToken: token });
+            this.redirectToSystemPage();
+        }
     }
 
     componentWillUnmount() {
@@ -93,6 +97,12 @@ class Login extends Component {
         this.setState = (state, callback) => {
             return;
         };
+    }
+
+    logout = () => {
+        localStorage.removeItem('accessToken');
+        this.props.adminLoginFail();
+        this.refresh();
     }
 
     render() {
@@ -147,6 +157,15 @@ class Login extends Component {
                                 value={LanguageUtils.getMessageByKey("login.login", lang)}
                                 onClick={this.processLogin}
                             />
+                        </div>
+
+                        <div className="form-group logout">
+                            <button
+                                className="btn"
+                                onClick={this.logout}
+                            >
+                                Logout
+                            </button>
                         </div>
                     </div>
                 </div>
