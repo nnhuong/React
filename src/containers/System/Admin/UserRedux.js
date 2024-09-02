@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getAllCodeService } from '../../../services/userService';
 import { escapeRegExp } from 'lodash';
 import { LANGUAGES } from '../../../utils';
+import * as actions from '../../../store/actions';
 class UserRedux extends Component {
     constructor(props) {
         super(props);
@@ -14,6 +15,8 @@ class UserRedux extends Component {
 
 
     async componentDidMount() {
+        this.props.getGenderStart();
+
         try{
             let res = await getAllCodeService('gender');
             if (res && res.errCode === 0){
@@ -26,12 +29,18 @@ class UserRedux extends Component {
             console.log(e)
         } 
     }
-
-
+    
+    componentDidUpdate (prevProps, prevState, snapshot) {
+        if (prevProps.gender !== this.props.genderRedux){
+            this.setState({
+                genderArr: this.props.genderRedux
+        })
+    }
+}
     render() {
-        console.log('check state: ', this.state)
         let genders = this.state.genderArr;
         let language = this.props.language;
+        console.log('check props from redux: ', this.props.genderRedux)
         return (
             <div className="user-redux-container">
                 <div className="title">
@@ -77,6 +86,9 @@ class UserRedux extends Component {
                                     )
                                 })
                             }
+                            {/* <option>Nam</option>
+                            <option>Nữ</option>
+                            <option>Khác</option> */}
 
                             </select>
                             </div> 
@@ -84,7 +96,9 @@ class UserRedux extends Component {
                                 <label><FormattedMessage id="manage-user.position"/></label>
                             <select className="form-control">
                                 <option selected>Choose...</option>
-                                <option>...</option>
+                                <option>Admin</option>
+                                <option>Doctor</option>
+                                <option>Patient</option>
                             </select>
                             </div> 
                             <div className="col-3">
@@ -114,11 +128,15 @@ class UserRedux extends Component {
 const mapStateToProps = state => {
     return {
         language: state.app.language,
+        genderRedux: state.admin.genders
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        getGenderStart: () => dispatch(actions.fetchGenderStart())
+        // processLogout: () => dispatch(actions.processLogout()),
+        // changeLanguageAppRedux: (language) => dispatch(actions.changeLanguageApp(language))
     };
 };
 
