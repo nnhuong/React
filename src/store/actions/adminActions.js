@@ -1,10 +1,6 @@
 import actionTypes from './actionTypes';
 import { getAllCodeService } from '../../services/userService';
 
-// export const fetchGenderStart = () => ({
-//     type: actionTypes.FETCH_GENDER_START
-// })
-
 export const fetchGenderStart = () => {
     return async(dispatch, getState) =>{
         try {
@@ -19,7 +15,6 @@ export const fetchGenderStart = () => {
             }
         } catch (e) {
             dispatch(fetchGenderFailed());
-            // console.log('fetchGenderStart error: ', e)
         }
     }
   

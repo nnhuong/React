@@ -99,15 +99,29 @@ class UserRedux extends Component {
                             <div className="col-3">
                                 <label><FormattedMessage id="manage-user.position" /></label>
                                 <select className="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
+                                {positions && positions.length > 0 &&
+                                        positions.map((item, index) => {
+                                            return (
+                                                <option key={index}>{language === LANGUAGES.VI ? item.valueVi : item.valueEn}</option>
+                                            )
+                                        })
+                                    }
+
                                 </select>
                             </div>
                             <div className="col-3">
                                 <label><FormattedMessage id="manage-user.role" /></label>
                                 <select className="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
+                                    {roles && roles.length > 0 &&
+                                        roles.map((item, index) => {
+                                            return (
+                                                <option key={index}>{language === LANGUAGES.VI ? item.valueVi : item.valueEn}</option>
+                                            )
+                                        })
+
+                                    }
+
+                                    {/* <option selected>Choose...</option> */}
                                 </select>
                             </div>
                             <div className="col-3">
