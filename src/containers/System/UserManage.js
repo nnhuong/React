@@ -48,7 +48,6 @@ class UserManage extends Component {
     })
   }
 
-
   toggleUserEditModal = () => {
     this.setState({
       isOpenModalEditUser: !this.state.isOpenModalEditUser,
@@ -71,7 +70,6 @@ class UserManage extends Component {
       console.log(e)
     }
   }
-
 
   handleDeleteUser = async (user) => {
     console.log('Click delete', user)
@@ -96,7 +94,6 @@ class UserManage extends Component {
     })
   }
 
-
   doEditUser = async (user) => {
     let res = await editUserService(user);
     try {
@@ -114,7 +111,6 @@ class UserManage extends Component {
     }
   }
 
-
   render() {
     let arrUsers = this.state.arrUsers;
     console.log(arrUsers)
@@ -131,7 +127,6 @@ class UserManage extends Component {
             toggleFromParent={this.toggleUserEditModal}
             currentUser={this.state.userEdit}
             editUser={this.doEditUser}
-
           />
         }
         <div className="title text-center">Manage users </div>
@@ -166,13 +161,11 @@ class UserManage extends Component {
               })
               }
             </tbody>
-
           </table>
         </div>
       </div>
     );
   }
-
 }
 
 const mapStateToProps = state => {
