@@ -38,15 +38,6 @@ class ModalUser extends Component {
   }
 
   handleOnchangeInput = (event, id) => {
-    //bad code
-    // this.state[id] = event.target.value;
-    // this.setState({
-    //   ...this.state
-    // }, () => {
-    //   console.log('check bad state:', this.state)
-    // })
-
-    //good code
     let copyState = { ...this.state };
     copyState[id] = event.target.value;
     this.setState({
@@ -82,9 +73,7 @@ class ModalUser extends Component {
         className={'modal-user-container'}
         size="lg"
       >
-
         <ModalHeader toggle={() => { this.toggle() }}>Create a new user</ModalHeader>
-
         <ModalBody>
           <div className="modal-user-body">
             <div className="input-container">
@@ -124,7 +113,6 @@ class ModalUser extends Component {
                 value = {this.state.address}/>
             </div>
           </div>
-
         </ModalBody>
         <ModalFooter>
           <Button color="primary" 
@@ -135,7 +123,6 @@ class ModalUser extends Component {
       </Modal>
     )
   }
-
 }
 
 const mapStateToProps = state => {

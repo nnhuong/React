@@ -19,7 +19,6 @@ class modalEditUser extends Component {
         }
     }
 
-
     componentDidMount() {
         let user = this.props.currentUser;
         if(user && !_.isEmpty(user)){
@@ -76,7 +75,6 @@ class modalEditUser extends Component {
                 size="lg"
             >
                 <ModalHeader toggle={() => { this.toggle() }}>Edit a new user</ModalHeader>
-
                 <ModalBody>
                     <div className="modal-user-body">
                         <div className="input-container">
